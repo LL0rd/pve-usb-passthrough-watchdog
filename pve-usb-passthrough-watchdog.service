@@ -1,0 +1,13 @@
+[Unit]
+Description=Re-attach USB passthrough device to a Proxmox VE guest
+After=pve-guests.service
+
+[Service]
+Type=simple
+EnvironmentFile=/etc/default/pve-usb-passthrough-watchdog
+ExecStart=/usr/local/sbin/pve-usb-passthrough-watchdog.sh
+Restart=always
+RestartSec=30
+
+[Install]
+WantedBy=multi-user.target
